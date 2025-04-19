@@ -5,26 +5,26 @@ This project template for Python is created by ncg.
 ## Installation
 
 ### Create .env file.
-```python
+```
 LOG_FILE_NAME="app.log"
 ```
 
-### Update pip.
-```python
-python -m pip install -U pip
-```
-
 ### Create virtual environment.
-```python
+```bash
 python -m venv .venv
 ```
 
 ### Activate virtual environment.
-```python
+```bash
 .venv\Scripts\Activate.ps1
 ```
 
-### Install packages in requirements.txt.
-```python
+### Update pip.
+```bash
+python -m pip install -U pip
+```
+
+### Install dependencies.
+```bash
 pip install -r requirements.txt
 ```
