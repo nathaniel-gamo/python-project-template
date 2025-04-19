@@ -1,13 +1,13 @@
 import logging
 
-import config
+import src.config
 
 def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        filename=f"{config.LOG_FILE_NAME}"
+        filename=f"{src.config.LOG_FILE_NAME}"
     )
 
     logging.info("test")
