@@ -14,7 +14,7 @@ LOG_FILE_NAME="app.log"
 python -m venv .venv
 ```
 
-### Activate virtual environment.
+### Activate virtual environment (Python Debug Console terminal).
 ```bash
 .venv\Scripts\Activate.ps1
 ```
