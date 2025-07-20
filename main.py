@@ -5,7 +5,12 @@ import src.config as config
 
 
 def main(args: argparse.Namespace) -> None:
-    pass
+    try:
+        logging.info("Executing main.py...")
+        raise ValueError("no value")
+    except Exception as e:
+        logging.error(f"An error occurred during the "
+                      f"execution of main.py.\nError message: {e}")
 
 if __name__ == "__main__":
     logging.basicConfig(
@@ -19,8 +24,10 @@ if __name__ == "__main__":
         description="python-project-template")
     """
     parser.add_argument("argument_1", 
+                        default=None, 
+                        nargs="?", 
                         type=str, 
-                        help="Argument 1")
+                        help="argument 1")
     """
     args: argparse.Namespace = parser.parse_args()
 
