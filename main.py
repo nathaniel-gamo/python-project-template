@@ -7,7 +7,6 @@ import src.config as config
 def main(args: argparse.Namespace) -> None:
     try:
         logging.info("Executing main.py...")
-        raise ValueError("no value")
     except Exception as e:
         logging.error(f"An error occurred during the "
                       f"execution of main.py.\nError message: {e}")
