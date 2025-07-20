@@ -8,7 +8,7 @@ def main(args: argparse.Namespace) -> None:
     try:
         logging.info("Executing main.py...")
     except Exception as e:
-        logging.error(f"An error occurred during the "
+        logging.error("An error occurred during the "
                       f"execution of main.py.\nError message: {e}")
 
 if __name__ == "__main__":
