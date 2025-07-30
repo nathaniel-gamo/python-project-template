@@ -31,10 +31,8 @@ if __name__ == "__main__":
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="python-project-template")
     
-    parser.add_argument("dotenv_path",
+    parser.add_argument("--dotenv_path",
                         type=str,
-                        default="",
-                        nargs="?",
                         help="The file path of .env.")
     
     args: argparse.Namespace = parser.parse_args()
