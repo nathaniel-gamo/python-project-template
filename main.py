@@ -26,7 +26,7 @@ def retry(function: Callable[[argparse.Namespace], None]) -> Callable[...,
 @retry
 def main(args: argparse.Namespace) -> None:
     logging.info("Running main.py...")
-    raise Exception("lol")
+
 if __name__ == "__main__":
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="python-project-template")
