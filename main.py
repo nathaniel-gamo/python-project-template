@@ -27,20 +27,20 @@ def retry(function: Callable[[argparse.Namespace], None]) -> Callable[...,
 def main(args: argparse.Namespace) -> None:
     logging.info("Running main.py...")
 
+    print(config.MAX_RETRIES)
+
 if __name__ == "__main__":
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="python-project-template")
     
     parser.add_argument("--dotenv_path",
                         type=str,
+                        default="",
                         help="The file path of .env.")
     
     args: argparse.Namespace = parser.parse_args()
 
-    if args.dotenv_path:
-        config.call_load_dotenv(args.dotenv_path)
-    else:
-        config.call_load_dotenv()
+    config.call_load_dotenv(args.dotenv_path)
 
     logging.basicConfig(
         level=logging.INFO,
