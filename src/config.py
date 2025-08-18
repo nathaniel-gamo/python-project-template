@@ -22,7 +22,6 @@ def call_load_dotenv(dotenv_path: str = _dotenv_path) -> None:
 
     load_dotenv(dotenv_path=dotenv_path, override=True)
 
-    LOG_FILE_PATH = os.getenv("LOG_FILE_PATH")
+    LOG_FILE_PATH = os.getenv("LOG_FILE_PATH", "app.log")
     MAX_RETRIES = int(os.getenv("MAX_RETRIES", "0"))
     RETRY_INTERVAL_SECONDS = int(os.getenv("RETRY_INTERVAL_SECONDS", "0"))
-
