@@ -27,8 +27,6 @@ def retry(function: Callable[[argparse.Namespace], None]) -> Callable[...,
 def main(args: argparse.Namespace) -> None:
     logging.info("Running main.py...")
 
-    print(config.MAX_RETRIES)
-
 if __name__ == "__main__":
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="python-project-template")

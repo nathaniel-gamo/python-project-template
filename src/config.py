@@ -3,9 +3,9 @@ import sys
 
 from dotenv import load_dotenv
 
-LOG_FILE_PATH: str = ""
-MAX_RETRIES: int = 0
-RETRY_INTERVAL_SECONDS: int = 0
+LOG_FILE_PATH: str
+MAX_RETRIES: int
+RETRY_INTERVAL_SECONDS: int
 
 _basedir: str
 if getattr(sys, "frozen", False):
@@ -24,5 +24,5 @@ def call_load_dotenv(dotenv_path: str) -> None:
                 else _dotenv_path, override=True)
 
     LOG_FILE_PATH = os.getenv("LOG_FILE_PATH", "app.log")
-    MAX_RETRIES = int(os.getenv("MAX_RETRIES", "0"))
-    RETRY_INTERVAL_SECONDS = int(os.getenv("RETRY_INTERVAL_SECONDS", "0"))
+    MAX_RETRIES = int(os.getenv("MAX_RETRIES", 0))
+    RETRY_INTERVAL_SECONDS = int(os.getenv("RETRY_INTERVAL_SECONDS", 0))
