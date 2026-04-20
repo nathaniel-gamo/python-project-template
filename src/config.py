@@ -3,26 +3,21 @@ import sys
 
 from dotenv import load_dotenv
 
-LOG_FILE_PATH: str
-MAX_RETRIES: int
-RETRY_INTERVAL_SECONDS: int
 
-_basedir: str
-if getattr(sys, "frozen", False):
-    _basedir = os.path.dirname(sys.executable)
-else:
-    _basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+def _get_dotenv_path() -> str:
+    if getattr(sys, "frozen", False):
+        return os.path.join(os.path.dirname(sys.executable), ".env")
+    
+    return os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+        ".env")
 
-_dotenv_path: str = os.path.join(_basedir, ".env")
-
-def call_load_dotenv(dotenv_path: str) -> None:
-    global LOG_FILE_PATH
-    global MAX_RETRIES
-    global RETRY_INTERVAL_SECONDS
+def load_config(dotenv_path: str = "", prefix: str = "") -> dict[str, str]:
 
     load_dotenv(dotenv_path=dotenv_path if os.path.isfile(dotenv_path) 
-                else _dotenv_path, override=True)
+                else _get_dotenv_path(), override=True)
 
-    LOG_FILE_PATH = os.getenv("LOG_FILE_PATH", "app.log")
-    MAX_RETRIES = int(os.getenv("MAX_RETRIES", 0))
-    RETRY_INTERVAL_SECONDS = int(os.getenv("RETRY_INTERVAL_SECONDS", 0))
+    if prefix:
+        return {key: value for key, value in os.environ.items() 
+                if key.startswith(prefix)}
+    return {key: value for key, value in os.environ.items()}

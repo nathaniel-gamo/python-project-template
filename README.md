@@ -7,8 +7,9 @@ This project template for Python is created by ncg.
 ### Create .env file.
 ```
 LOG_FILE_PATH=app.log
-MAX_RETRIES=0
+MAX_RETRIES=3
 RETRY_INTERVAL_SECONDS=0
+RETRY_RAISE_EXCEPTION=true
 ```
 
 ### Create virtual environment.
