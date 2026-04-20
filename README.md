@@ -9,7 +9,7 @@ This project template for Python is created by ncg.
 LOG_FILE_PATH=app.log
 MAX_RETRIES=3
 RETRY_INTERVAL_SECONDS=0
-RETRY_RAISE_EXCEPTION=true
+RETRY_RAISE_EXCEPTION=True
 ```
 
 ### Create virtual environment.
