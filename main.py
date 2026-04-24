@@ -41,11 +41,16 @@ def _bootstrap() -> dict[str, str | None]:
 
     config: dict[str, str | None] = src.config.load_config(args.dotenv_path)
 
+    log_file_path: str = "app.log"
+    if "LOG_FILE_PATH" in config:
+        if config["LOG_FILE_PATH"]:
+            log_file_path = config["LOG_FILE_PATH"]
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        filename=config["LOG_FILE_PATH"]
+        filename=log_file_path
     )
 
     return config
@@ -55,18 +60,21 @@ def main() -> None:
 
     logging.info("Running...")
 
-    max_retries: int = int(config["MAX_RETRIES"] 
-                           if config["MAX_RETRIES"] 
-                           else 0)
-    
-    retry_interval_seconds: int = int(config["RETRY_INTERVAL_SECONDS"] 
-                                      if config["RETRY_INTERVAL_SECONDS"] 
-                                      else 0)
-    
+    max_retries: int = 0
+    if "MAX_RETRIES" in config:
+        if config["MAX_RETRIES"]:
+            max_retries = int(config["MAX_RETRIES"])
+
+    retry_interval_seconds: int = 0
+    if "RETRY_INTERVAL_SECONDS" in config:
+        if config["RETRY_INTERVAL_SECONDS"]:
+            retry_interval_seconds = int(config["RETRY_INTERVAL_SECONDS"])
+
     retry_raise_exception: bool = True
-    if config["RETRY_RAISE_EXCEPTION"]:
-        retry_raise_exception = (config["RETRY_RAISE_EXCEPTION"].lower() 
-                                 == "true")
+    if "RETRY_RAISE_EXCEPTION" in config:
+        if config["RETRY_RAISE_EXCEPTION"]:
+            retry_raise_exception = (config["RETRY_RAISE_EXCEPTION"].lower() 
+                                     == "true")
 
     @retry(max_retries, retry_interval_seconds, retry_raise_exception)
     def run() -> None:
