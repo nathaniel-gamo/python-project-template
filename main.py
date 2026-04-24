@@ -28,7 +28,7 @@ def retry(max_retries: int = 3,
         return wrapper
     return decorator
 
-def _bootstrap() -> dict[str, str]:
+def _bootstrap() -> dict[str, str | None]:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
     description="python-project-template")
 
@@ -39,7 +39,7 @@ def _bootstrap() -> dict[str, str]:
 
     args: argparse.Namespace = parser.parse_args()
 
-    config: dict[str, str] = src.config.load_config(args.dotenv_path)
+    config: dict[str, str | None] = src.config.load_config(args.dotenv_path)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -51,13 +51,22 @@ def _bootstrap() -> dict[str, str]:
     return config
 
 def main() -> None:
-    config: dict[str, str] = _bootstrap()
+    config: dict[str, str | None] = _bootstrap()
 
     logging.info("Running...")
 
-    max_retries: int = int(config["MAX_RETRIES"])
-    retry_interval_seconds: int = int(config["RETRY_INTERVAL_SECONDS"])
-    retry_raise_exception: bool = bool(config["RETRY_RAISE_EXCEPTION"].lower())
+    max_retries: int = int(config["MAX_RETRIES"] 
+                           if config["MAX_RETRIES"] 
+                           else 0)
+    
+    retry_interval_seconds: int = int(config["RETRY_INTERVAL_SECONDS"] 
+                                      if config["RETRY_INTERVAL_SECONDS"] 
+                                      else 0)
+    
+    retry_raise_exception: bool = True
+    if config["RETRY_RAISE_EXCEPTION"]:
+        retry_raise_exception = (config["RETRY_RAISE_EXCEPTION"].lower() 
+                                 == "true")
 
     @retry(max_retries, retry_interval_seconds, retry_raise_exception)
     def run() -> None:
