@@ -16,7 +16,8 @@ def load_config(dotenv_path: str = "",
                 dotenv_only: bool = True) -> dict[str, str | None]:
     
     dotenv_path = (dotenv_path 
-                   if os.path.isfile(dotenv_path) 
+                   if (os.path.isfile(dotenv_path) 
+                       and dotenv_path[-4:] == ".env")
                    else _get_dotenv_path())
     
     if dotenv_only:
