@@ -2,7 +2,7 @@
 
 A Python command-line interface project template.
 
-## Installation
+## Guide
 
 ### Create .env file.
 ```
