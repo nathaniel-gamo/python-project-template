@@ -27,7 +27,7 @@ python -m venv .venv
 python -m pip install -U pip
 ```
 
-### Install dependencies.
+### Install packages.
 ```bash
 pip install -r requirements.txt
 ```
