@@ -1,6 +1,6 @@
-# Python Project Template
+# Python CLI Project Template
 
-This project template for Python is created by ncg.
+A Python command-line interface project template.
 
 ## Installation
 
@@ -30,4 +30,9 @@ python -m pip install -U pip
 ### Install dependencies.
 ```bash
 pip install -r requirements.txt
+```
+
+### Create executable file.
+```bash
+pyinstaller main.py --onefile --console --clean --name "main" --distpath "C:\Users\{User Profile}\Downloads"
 ```
