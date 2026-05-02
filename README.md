@@ -17,7 +17,7 @@ RETRY_RAISE_EXCEPTION=True
 python -m venv .venv
 ```
 
-### Activate virtual environment (Python Debug Console terminal).
+### Activate virtual environment.
 ```bash
 .venv\Scripts\Activate.ps1
 ```
