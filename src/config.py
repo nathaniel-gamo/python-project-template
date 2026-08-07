@@ -12,6 +12,7 @@ def _get_dotenv_path() -> str:
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
         ".env")
 
+
 def load_config(dotenv_path: str = "", 
                 dotenv_only: bool = True) -> dict[str, str | None]:
     

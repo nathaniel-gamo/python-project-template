@@ -6,7 +6,6 @@ A Python command-line interface project template.
 
 ### Create .env file.
 ```
-LOG_FILE_PATH=app.log
 MAX_RETRIES=3
 RETRY_INTERVAL_SECONDS=0
 RETRY_RAISE_EXCEPTION=True
@@ -34,5 +33,5 @@ pip install -r requirements.txt
 
 ### Create executable file.
 ```bash
-pyinstaller main.py --onefile --console --clean --name "main" --distpath "C:\Users\{User Profile}\Downloads"
+pyinstaller main.py --onefile --console --clean --name "main" --distpath "C:\Users\{User Profile}\Documents\Python Executables"
 ```
