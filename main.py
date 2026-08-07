@@ -10,7 +10,7 @@ logging.basicConfig(
     format=(
         "%(asctime)s %(levelname)s "
         "[%(message)s] %(filename)s "
-        "|%(funcName)s | %(lineno)d"),
+        "| %(funcName)s | %(lineno)d"),
     datefmt="%Y-%m-%d %H:%M:%S",
     handlers=[logging.FileHandler("app.log"), 
               logging.StreamHandler(sys.stdout)])
