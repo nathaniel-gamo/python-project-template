@@ -9,8 +9,8 @@ logging.basicConfig(
     level=logging.INFO,
     format=(
         "%(asctime)s %(levelname)s "
-        "[%(message)s] %(filename)s "
-        "| %(funcName)s | %(lineno)d"),
+        "[%(message)s] (%(filename)s "
+        "| %(funcName)s | line %(lineno)d)"),
     datefmt="%Y-%m-%d %H:%M:%S",
     handlers=[logging.FileHandler("app.log"), 
               logging.StreamHandler(sys.stdout)])
@@ -53,9 +53,7 @@ def _bootstrap() -> dict[str, str | None]:
 
     args: argparse.Namespace = parser.parse_args()
 
-    config: dict[str, str | None] = src.config.load_config(args.dotenv_path)
-
-    return config
+    return src.config.load_config(args.dotenv_path)
 
 
 def main() -> None:
@@ -71,7 +69,7 @@ def main() -> None:
 
     @retry(max_retries, retry_interval_seconds, retry_raise_exception)
     def run() -> None:
-        return None
+        pass
 
     run()
 
