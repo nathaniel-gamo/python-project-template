@@ -33,5 +33,5 @@ pip install -r requirements.txt
 
 ### Create executable file.
 ```bash
-pyinstaller main.py --onefile --console --clean --name "main" --distpath "C:\Users\{User Profile}\Documents\Python Executables"
+python -m nuitka main.py --onefile --windows-console-mode=force --remove-output --assume-yes-for-downloads --output-filename=python-cli-project-template.exe --output-dir="C:\Users\{User Profile}\Downloads"
 ```
