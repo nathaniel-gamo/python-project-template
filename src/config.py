@@ -1,26 +1,32 @@
 import os
 import sys
+from pathlib import Path
 
 from dotenv import dotenv_values, load_dotenv
 
 
 def _get_dotenv_path() -> str:
+
+    base_dir: Path
+
     if getattr(sys, "frozen", False):
-        return os.path.join(os.path.dirname(sys.executable), ".env")
-    
-    return os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
-        ".env")
+        base_dir = Path(sys.executable).parent
+    else:
+        base_dir = Path(sys.argv[0]).parent
+
+    return str(base_dir / ".env")
 
 
-def load_config(dotenv_path: str = "", 
-                dotenv_only: bool = True) -> dict[str, str | None]:
-    
-    dotenv_path = (dotenv_path 
-                   if (os.path.isfile(dotenv_path) 
-                       and dotenv_path[-4:] == ".env")
-                   else _get_dotenv_path())
-    
+def load_config(
+        dotenv_path: str = "", 
+        dotenv_only: bool = True) -> dict[str, str | None]:
+
+    dotenv_path = (
+        dotenv_path
+        if Path(dotenv_path).is_file() and Path(dotenv_path).name == ".env"
+        else _get_dotenv_path()
+    )
+
     if dotenv_only:
         return dotenv_values(dotenv_path)
 
