@@ -4,7 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-cli-project-template"
-version = "0.1.0"
+version = "0.0.1"
+authors = [
+  { name="Nathaniel Gamo", email="nathaniel.c.gamo@gmail.com" },
+]
+description = "An example package"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
 requires-python = ">=3.14"
 dependencies = [
     "ast_serialize>=0.13.1",
@@ -20,3 +27,6 @@ dependencies = [
     "ruff>=0.17.4",
     "typing_extensions>=4.16.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/nathaniel-gamo/python-cli-project-template"
