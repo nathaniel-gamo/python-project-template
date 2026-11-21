@@ -52,7 +52,7 @@ pip install --upgrade ruff
 ruff check .
 ruff check . --fix
 
-ruff format --check .
+ruff format . --check
 ruff format .
 ```
 
