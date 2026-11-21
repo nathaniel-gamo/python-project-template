@@ -5,6 +5,8 @@ import time
 from collections.abc import Callable
 from typing import Any
 
+import src.config
+
 logging.basicConfig(
     level=logging.INFO,
     format=(
@@ -15,8 +17,6 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
     handlers=[logging.FileHandler("app.log"), logging.StreamHandler(sys.stdout)],
 )
-
-import src.config
 
 logger: logging.Logger = logging.getLogger(__name__)
 
