@@ -62,17 +62,11 @@ pip install --upgrade build
 python -m build
 ```
 
-### Upload the package to TestPyPI using twine
+### Upload the package to TestPyPI or PyPI using twine
 ```bash
 pip install --upgrade twine
 python -m twine check dist/*
 python -m twine upload --repository testpypi dist/*
-```
-
-### Upload the package to PyPI using twine
-```bash
-pip install --upgrade twine
-python -m twine check dist/*
 python -m twine upload dist/*
 ```
 
