@@ -1,6 +1,6 @@
-# Python CLI Project Template
+# Python Project Template
 
-A template for Python command-line interface (CLI) projects.
+A template for building command-line interface (CLI) projects and Python packages.
 
 ## Commands
 
