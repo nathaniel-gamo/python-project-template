@@ -38,6 +38,8 @@ pip install -r requirements.txt
 
 ### Update packages using pip-review
 ```bash
+pip install --upgrade pip-review
+
 pip-review
 pip-review --auto
 pip-review --interactive
@@ -45,6 +47,8 @@ pip-review --interactive
 
 ### Ruff
 ```bash
+pip install --upgrade ruff
+
 ruff check .
 ruff check . --fix
 
@@ -54,20 +58,20 @@ ruff format .
 
 ### Build a package using build
 ```bash
-pip install build
+pip install --upgrade build
 python -m build
 ```
 
 ### Upload the package to TestPyPI using twine
 ```bash
-pip install twine
+pip install --upgrade twine
 python -m twine check dist/*
 python -m twine upload --repository testpypi dist/*
 ```
 
 ### Upload the package to PyPI using twine
 ```bash
-pip install twine
+pip install --upgrade twine
 python -m twine check dist/*
 python -m twine upload dist/*
 ```
@@ -81,11 +85,12 @@ pip install my_package --index-url https://pypi.org/simple/
 
 ### Create an executable using Nuitka
 ```bash
+pip install --upgrade nuitka
 python -m nuitka main.py --onefile --windows-console-mode=force --remove-output --assume-yes-for-downloads --output-filename=python-cli-project-template.exe --output-dir="C:\Users\{User Profile}\Downloads"
 ```
 
 ### Create an executable using PyInstaller
 ```bash
-pip install pyinstaller
+pip install --upgrade pyinstaller
 pyinstaller main.py --onefile --console --clean --name "python-cli-project-template" --distpath "C:\Users\{User Profile}\Downloads"
 ```
