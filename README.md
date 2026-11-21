@@ -59,12 +59,14 @@ ruff format .
 ### Build a package using build
 ```bash
 pip install --upgrade build
+
 python -m build
 ```
 
 ### Upload the package to TestPyPI or PyPI using twine
 ```bash
 pip install --upgrade twine
+
 python -m twine check dist/*
 python -m twine upload --repository testpypi dist/*
 python -m twine upload dist/*
@@ -73,6 +75,7 @@ python -m twine upload dist/*
 ### Install the package uploaded to TestPyPI or PyPI
 ```bash
 pip cache purge
+
 pip install my_package --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/
 pip install my_package --index-url https://pypi.org/simple/
 ```
@@ -80,11 +83,13 @@ pip install my_package --index-url https://pypi.org/simple/
 ### Create an executable using Nuitka
 ```bash
 pip install --upgrade nuitka
+
 python -m nuitka main.py --onefile --windows-console-mode=force --remove-output --assume-yes-for-downloads --output-filename=python-cli-project-template.exe --output-dir="C:\Users\{User Profile}\Downloads"
 ```
 
 ### Create an executable using PyInstaller
 ```bash
 pip install --upgrade pyinstaller
+
 pyinstaller main.py --onefile --console --clean --name "python-cli-project-template" --distpath "C:\Users\{User Profile}\Downloads"
 ```
